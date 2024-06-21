@@ -12,9 +12,7 @@ class SiteSettingServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(SiteSettingService::class, function(){
-            return new SiteSettingService();
-        });
+
     }
 
     /**

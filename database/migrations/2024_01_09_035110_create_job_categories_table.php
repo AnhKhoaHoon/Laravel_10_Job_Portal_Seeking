@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('job_categories', function (Blueprint $table) {
             $table->id();
+            $table->string('icon');
             $table->string('name');
-            $table->string('image')->default('/default-uploads/avatar.png');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->enum('role', ['company', 'candidate'])->default('candidate');
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('slug');
+            $table->boolean('show_at_popular')->default(0);
+            $table->boolean('show_at_featured')->default(0);
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('job_categories');
     }
 };
